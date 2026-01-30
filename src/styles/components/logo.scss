@@ -1,0 +1,56 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  $logo: &;
+
+  &_img {
+    width: 100%;
+  }
+
+  &--header {
+    display: none;
+
+    @include respond-to(lg) {
+      display: flex;
+    }
+
+    // На всех страницах кроме главной логотип всегда виден
+    .page:not(.page--index) & {
+      display: flex;
+      width: 80px;
+
+      @include respond-to(xl) {
+        width: 64px;
+      }
+    }
+
+    // На главной странице логотип появляется только при скролле
+    .page--index .header.scrolled & {
+      display: flex;
+      width: 80px;
+
+      @include respond-to(xl) {
+        width: 64px;
+      }
+    }
+  }
+
+  &--intro {
+    width: 300px;
+    @include respond-to(lg) {
+      opacity: 0.6;
+    }
+    img {
+      width: 100%;
+    }
+  }
+
+  &--footer {
+    width: 300px;
+    #{$logo}_img {
+    }
+    #{$logo}_text {
+    }
+  }
+}

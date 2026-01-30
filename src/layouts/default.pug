@@ -1,0 +1,60 @@
+include ../components/mixins/head.pug
+include ../components/mixins/nav.pug
+include ../components/mixins/phones.pug
+include ../components/mixins/button.pug
+include ../components/mixins/button-new.pug
+include ../components/mixins/logo.pug
+include ../components/mixins/burger.pug
+include ../components/mixins/socials.pug
+include ../components/mixins/modal.pug
+include ../components/mixins/intro.pug
+include ../components/mixins/section.pug
+include ../components/mixins/card.pug
+include ../components/mixins/txt.pug
+include ../components/mixins/gallery.pug
+include ../components/mixins/gallery-mosaic.pug
+include ../components/mixins/reviews.pug
+include ../components/mixins/stars.pug
+include ../components/mixins/events.pug
+include ../components/mixins/breadcrumbs.pug
+include ../components/mixins/seo.pug
+include ../components/mixins/pagination.pug
+include ../components/mixins/accordion.pug
+include ../components/mixins/link.pug
+include ../components/mixins/vigoda.pug
+include ../components/mixins/table.pug
+include ../components/mixins/order.pug
+include ../components/mixins/select.pug
+include ../components/mixins/counter.pug
+include ../components/mixins/hero.pug
+include ../components/mixins/partners.pug
+include ../components/mixins/online.pug
+include ../components/mixins/cb.pug
+include ../components/mixins/filters.pug
+include ../components/mixins/adventages.pug
+include ../components/mixins/features.pug
+include ../components/mixins/tabs.pug
+include ../components/mixins/menu.pug
+include ../components/mixins/frame.pug
+include ../components/mixins/recvizity.pug
+include ../components/mixins/palaces.pug
+include ../components/sections/rituals.pug
+include ../components/mixins/spa.pug
+
+
+doctype html
+html(lang="ru")
+  // page — объект из templateParameters (см. webpack.config.js)
+  +Head(page)
+
+  body.body
+
+    // Modal Mobile Menu
+    +Modal('mobile-menu')(class='modal--mobile')
+      +NavMobile()
+
+    .page(class=`${page.page_class ? 'page--' + page.page_class : ''}`)
+      include ../components/sections/header.pug
+      main.main(class=`${page.page_class ? 'main--' + page.page_class : ''}`)
+        block content
+      include ../components/sections/footer.pug

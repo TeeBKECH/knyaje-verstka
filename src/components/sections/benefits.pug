@@ -1,0 +1,30 @@
+//- Секция "Льготы честному люду"
+section.section.section--benefits(data-aos="fade-up", data-aos-duration="1000")
+  .container.section_container
+    +SectionTitle({
+      title: 'ЛЬГОТЫ ЧЕСТНОМУ ЛЮДУ',
+      size: 'lg',
+      type: 'center'
+    })
+  .benefits_content
+    .benefits_items
+      .benefits_item
+        .benefits_item_content
+          span.benefits_item_label Счастливые часы
+          p.benefits_item_title Пн-Чт до 15:00: входной билет в Мовню на 3 часа — 3500₽
+          .benefits_item_text
+            p Акция не суммируется с другими акциями и предложениями
+          .benefits_item_actions
+            +Button('Подробнее', ['secondary', 'md', 'fw'])
+        .benefits_item_img
+          img(src="assets/img/benefits-1.webp", alt="Счастливые часы")
+      .benefits_item
+        .benefits_item_content
+          span.benefits_item_label Скидка 10%
+          p.benefits_item_title Каждый вторник скидка 10% для девушек на вход и все услуги
+          .benefits_item_text
+            p Акция не суммируется с другими акциями и предложениями
+          .benefits_item_actions
+            +Button('Подробнее', ['secondary', 'md', 'fw'])
+        .benefits_item_img
+          img(src="assets/img/benefits-2.webp", alt="Скидка 10%")

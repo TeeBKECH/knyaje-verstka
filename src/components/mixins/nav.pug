@@ -1,0 +1,80 @@
+-
+  const links = [
+    {
+      link: 'Прайс',
+      href: 'price.html',
+      submenu: []
+    },
+    {
+      link: 'Акции',
+      href: 'promotions.html',
+      submenu: []
+    },
+    {
+      link: 'Спа программы',
+      href: 'spa-programs.html',
+      submenu: []
+    },
+    {
+      link: 'Ресторан',
+      href: 'rest.html',
+      submenu: []
+    },
+    {
+      link: 'Мероприятия',
+      href: 'events.html',
+      submenu: []
+    },
+    {
+      link: 'Сертификаты',
+      href: 'certificates.html',
+      submenu: []
+    },
+  ]
+
+mixin MenuItem(props = {})
+  li.menu_item&attributes(attributes)
+    if (props.href)
+      a.menu_item_link(href=props.href)= props.link
+    else 
+      span.menu_item_link= props.link
+    if (props.submenu && props.submenu.length > 0)
+        span.menu_item_icon
+    if (props.submenu && props.submenu.length > 0)
+      ul.menu-drop
+        each subItem in props.submenu
+          li.menu-drop__item
+            a.menu-drop__link(href=subItem.href)= subItem.link
+
+mixin MenuItemMobile(props = {})
+  li.menu_item
+    a.menu_item_link(href=props.href)
+      span.menu_item_text= props.link
+
+mixin NavMain(props = {})
+  nav.nav&attributes(attributes)
+    ul.menu
+      each item, index in links
+        +MenuItem(item)
+        
+mixin NavMobile(props = {})
+  nav.nav--mobile&attributes(attributes)
+    ul.menu--mobile
+      each item, index in links
+        +MenuItemMobile(item)
+    .nav_contacts
+      +Button('Забронировать', ['primary', 'md', 'fw'])(data-modal="modal-form" data-modal-action="toggle")
+      +Socials([
+        {
+          icon: 'tg',
+          text: 'Telegram'
+        },
+        {
+          icon: 'vk',
+          text: 'VK'
+        },
+        {
+          icon: 'wa',
+          text: 'WhatsApp'
+        }
+      ])(class='socials--mobile')

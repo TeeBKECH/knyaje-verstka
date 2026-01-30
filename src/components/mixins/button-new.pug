@@ -1,0 +1,23 @@
+mixin Button(text = 'Текст кнопки', styles = ['primary'], type = 'button')
+  - let classes = ''
+  - const defaultSize = 'md'
+  - let hasSize = false
+  - let hasVariant = false
+  
+  each item in styles
+    - classes+= ` button--${item}`
+    - if (item === 'sm' || item === 'md' || item === 'lg' || item === 'xl') hasSize = true
+    - if (item === 'primary' || item === 'secondary' || item === 'third') hasVariant = true
+  
+  - if (!hasSize) classes+= ` button--${defaultSize}`
+  - if (!hasVariant) classes+= ` button--primary`
+  
+  - const isLink = attributes.href !== undefined
+  - const tag = isLink ? 'a' : 'button'
+  
+  if isLink
+    a(class=`button${classes}`)&attributes(attributes)
+      span.button_text= text
+  else
+    button(type=type, class=`button${classes}`)&attributes(attributes)
+      span.button_text= text
